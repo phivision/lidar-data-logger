@@ -27,6 +27,8 @@ final class Renderer {
     // The max number of command buffers in flight
     private let maxInFlightBuffers = 3
     
+    private var counter = 0
+    
     private lazy var rotateToARCamera = Self.makeRotateToARCameraMatrix(orientation: orientation)
     private let session: ARSession
     private var buffer: CVPixelBuffer? = nil
@@ -177,11 +179,23 @@ final class Renderer {
           print(depthMapImageData)
         }*/
         
+        //Just a wrapper
         var ciimage = CIImage(cvPixelBuffer: depthMap)
-        let uiimage = UIImage(ciImage: ciimage)
-        let data = uiimage.pngData()
-        let filename = getDocumentsDirectory().appendingPathComponent("copy.png")
+        //
+        var uiimage = UIImage(ciImage: ciimage)
+        var data = uiimage.pngData()
+        var filename = getDocumentsDirectory().appendingPathComponent("depth.png")
         try! data!.write(to: filename)
+        
+        ciimage = CIImage(cvPixelBuffer: confidenceMap)
+        //
+        uiimage = UIImage(ciImage: ciimage)
+        data = uiimage.pngData()
+        filename = getDocumentsDirectory().appendingPathComponent("confidence.png")
+        try! data!.write(to: filename)
+        
+        counter = counter + 1
+        
         //ViewController.share(uiimage)
         depthTexture = makeTexture(fromPixelBuffer: depthMap, pixelFormat: .r32Float, planeIndex: 0)
         confidenceTexture = makeTexture(fromPixelBuffer: confidenceMap, pixelFormat: .r8Uint, planeIndex: 0)
