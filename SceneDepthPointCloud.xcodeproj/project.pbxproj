@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF5D9F8024C0D9870041F290 /* ImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5D9F7F24C0D9870041F290 /* ImageExt.swift */; };
 		CFC37FDF24CA155A00A28310 /* ARFrameEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC37FDE24CA155A00A28310 /* ARFrameEncoder.swift */; };
 		E73DD13124636FEF00D77039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73DD13024636FEF00D77039 /* AppDelegate.swift */; };
 		E73DD13324636FEF00D77039 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = E73DD13224636FEF00D77039 /* Shaders.metal */; };
@@ -22,7 +21,6 @@
 
 /* Begin PBXFileReference section */
 		948146554F46E56B015690CC /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
-		CF5D9F7F24C0D9870041F290 /* ImageExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExt.swift; sourceTree = "<group>"; };
 		CFC37FDE24CA155A00A28310 /* ARFrameEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFrameEncoder.swift; sourceTree = "<group>"; };
 		E73DD12D24636FEF00D77039 /* Point Cloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Point Cloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E73DD13024636FEF00D77039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,7 +35,6 @@
 		E73DD14224636FF100D77039 /* SceneDepthPointCloud-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SceneDepthPointCloud-Bridging-Header.h"; sourceTree = "<group>"; };
 		E7B7223A24807ACA002E43E8 /* MetalBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalBuffer.swift; sourceTree = "<group>"; };
 		E7B7223C24809D1E002E43E8 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		E7E2ED6F1473F1FD1E9543FA /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,21 +56,12 @@
 			name = Configuration;
 			sourceTree = "<group>";
 		};
-		BF2DD93DB9836723DA6BED14 /* LICENSE */ = {
-			isa = PBXGroup;
-			children = (
-				E7E2ED6F1473F1FD1E9543FA /* LICENSE.txt */,
-			);
-			path = LICENSE;
-			sourceTree = "<group>";
-		};
 		E73DD12424636FEF00D77039 = {
 			isa = PBXGroup;
 			children = (
 				E73DD12F24636FEF00D77039 /* SceneDepthPointCloud */,
 				E73DD12E24636FEF00D77039 /* Products */,
 				A6415A999BE1C768F18B2649 /* Configuration */,
-				BF2DD93DB9836723DA6BED14 /* LICENSE */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,7 +83,6 @@
 				E7B7223A24807ACA002E43E8 /* MetalBuffer.swift */,
 				E73DD13524636FEF00D77039 /* Renderer.swift */,
 				CFC37FDE24CA155A00A28310 /* ARFrameEncoder.swift */,
-				CF5D9F7F24C0D9870041F290 /* ImageExt.swift */,
 				E7B7223C24809D1E002E43E8 /* Helpers.swift */,
 				E73DD13924636FEF00D77039 /* Main.storyboard */,
 				E73DD13C24636FF100D77039 /* Assets.xcassets */,
@@ -177,7 +164,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF5D9F8024C0D9870041F290 /* ImageExt.swift in Sources */,
 				E73DD13324636FEF00D77039 /* Shaders.metal in Sources */,
 				E7B7223D24809D1E002E43E8 /* Helpers.swift in Sources */,
 				E7B7223B24807ACA002E43E8 /* MetalBuffer.swift in Sources */,
