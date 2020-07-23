@@ -14,7 +14,6 @@ final class ViewController: UIViewController, ARSessionDelegate {
     private let isUIEnabled = true
     private let confidenceControl = UISegmentedControl(items: ["Low", "Medium", "High"])
     private let rgbRadiusSlider = UISlider()
-    private let button = UIButton()
     
     private let session = ARSession()
     private var renderer: Renderer!
@@ -56,13 +55,7 @@ final class ViewController: UIViewController, ARSessionDelegate {
         rgbRadiusSlider.value = renderer.rgbRadius
         rgbRadiusSlider.addTarget(self, action: #selector(viewValueChanged), for: .valueChanged)
         
-        button.setTitle("Share", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        //button.frame = CGRectMake(15, -50, 300, 500)
-        button.addTarget(self, action: #selector(share), for: .touchDown)
-        
-        
-        let stackView = UIStackView(arrangedSubviews: [confidenceControl, rgbRadiusSlider, button])
+        let stackView = UIStackView(arrangedSubviews: [confidenceControl, rgbRadiusSlider])
         stackView.isHidden = !isUIEnabled
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -103,38 +96,6 @@ final class ViewController: UIViewController, ARSessionDelegate {
             break
         }
     }
-    
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    
-    @IBAction
-    private func share(_ sender: UIButton)
-        {
-            // set up activity view controller
-        /*let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        let userDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
-        let paths             = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)*/
-        if true//let dirPath        = paths.first
-        {
-           //let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent("copy.png")
-           //let image    = UIImage(contentsOfFile: imageURL.path)
-            let imageURL = getDocumentsDirectory().appendingPathComponent("copy.png")
-            let image = UIImage(contentsOfFile: imageURL.path)
-            //let text = "This is the text....."
-            //let textShare = [ text ]
-            let imageToShare = [ image ]
-            let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
-            //activityViewController.popoverPresentationController?.sourceView = self.view
-            activityViewController.popoverPresentationController?.sourceView = (sender as! UIButton)
-            //activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
-
-            // present the view controller
-            self.present(activityViewController, animated: true, completion: nil)
-        }
-        
-        }
     
     // Auto-hide the home indicator to maximize immersion in AR experiences.
     override var prefersHomeIndicatorAutoHidden: Bool {

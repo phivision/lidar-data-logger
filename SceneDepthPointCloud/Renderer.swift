@@ -5,6 +5,8 @@ Abstract:
 The host app renderer.
 */
 
+//THOMAS: Coded added from 205 to 214
+
 import Metal
 import MetalKit
 import ARKit
@@ -13,6 +15,7 @@ import VideoToolbox
 import UIKit
 
 final class Renderer {
+    private let encoder = JSONEncoder()
     // Maximum number of points we store in the point cloud
     private let maxPoints = 500_000
     // Number of sample points on the grid
@@ -111,6 +114,8 @@ final class Renderer {
         self.device = device
         self.renderDestination = renderDestination
         
+        encoder.outputFormatting = .prettyPrinted
+        
         library = device.makeDefaultLibrary()!
         commandQueue = device.makeCommandQueue()!
         
@@ -159,44 +164,7 @@ final class Renderer {
             let confidenceMap = frame.sceneDepth?.confidenceMap else {
                 return false
         }
-//        let depthMapFormat = CVPixelBufferGetPixelFormatType(depthMap)
-//        let confidenceMapFormat = CVPixelBufferGetPixelFormatType(confidenceMap)
         
-//        var cgImage: CGImag
-        /*var cgImage: CGImage?
-        VTCreateCGImageFromCVPixelBuffer(depthMap, options: nil, imageOut: &cgImage)
-         
-        if let cgImage = cgImage {
-          print("cgimage made out of depth map")
-        }*/
-        
-//        print(CVPixelBufferGetPixelFormatType(depthMap))
-        
-        /*let depthMapImage = UIImage(pixelBuffer: depthMap)
-        
-        if let depthMapImage = depthMapImage {
-          let depthMapImageData = depthMapImage.pngData()
-          print(depthMapImageData)
-        }*/
-        
-        //Just a wrapper
-        var ciimage = CIImage(cvPixelBuffer: depthMap)
-        //
-        var uiimage = UIImage(ciImage: ciimage)
-        var data = uiimage.pngData()
-        var filename = getDocumentsDirectory().appendingPathComponent("depth.png")
-        try! data!.write(to: filename)
-        
-        ciimage = CIImage(cvPixelBuffer: confidenceMap)
-        //
-        uiimage = UIImage(ciImage: ciimage)
-        data = uiimage.pngData()
-        filename = getDocumentsDirectory().appendingPathComponent("confidence.png")
-        try! data!.write(to: filename)
-        
-        counter = counter + 1
-        
-        //ViewController.share(uiimage)
         depthTexture = makeTexture(fromPixelBuffer: depthMap, pixelFormat: .r32Float, planeIndex: 0)
         confidenceTexture = makeTexture(fromPixelBuffer: confidenceMap, pixelFormat: .r8Uint, planeIndex: 0)
         
@@ -234,6 +202,17 @@ final class Renderer {
         update(frame: currentFrame)
         updateCapturedImageTextures(frame: currentFrame)
         
+        //THOMAS: encodes the data from ARFrame as a JSON file, and saves locally to iPad. 
+        do {
+            let encodedData = try JSONEncoder().encode(currentFrame)
+            print(encodedData)
+            let filename = getDocumentsDirectory().appendingPathComponent("data" + String(counter) + ".json")
+            try! encodedData.write(to: filename)
+            counter = counter + 1
+        } catch let error {
+          print(error.localizedDescription)
+        }
+ 
         // handle buffer rotating
         currentBufferIndex = (currentBufferIndex + 1) % maxInFlightBuffers
         pointCloudUniformsBuffers[currentBufferIndex][0] = pointCloudUniforms

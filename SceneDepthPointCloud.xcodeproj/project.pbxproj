@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF5D9F8024C0D9870041F290 /* ImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5D9F7F24C0D9870041F290 /* ImageExt.swift */; };
+		CFC37FDF24CA155A00A28310 /* ARFrameEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC37FDE24CA155A00A28310 /* ARFrameEncoder.swift */; };
 		E73DD13124636FEF00D77039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73DD13024636FEF00D77039 /* AppDelegate.swift */; };
 		E73DD13324636FEF00D77039 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = E73DD13224636FEF00D77039 /* Shaders.metal */; };
 		E73DD13624636FEF00D77039 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73DD13524636FEF00D77039 /* Renderer.swift */; };
@@ -21,8 +22,8 @@
 
 /* Begin PBXFileReference section */
 		948146554F46E56B015690CC /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
-		B57D60B9736905755DECF7CE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CF5D9F7F24C0D9870041F290 /* ImageExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExt.swift; sourceTree = "<group>"; };
+		CFC37FDE24CA155A00A28310 /* ARFrameEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFrameEncoder.swift; sourceTree = "<group>"; };
 		E73DD12D24636FEF00D77039 /* Point Cloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Point Cloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E73DD13024636FEF00D77039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E73DD13224636FEF00D77039 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		E73DD12424636FEF00D77039 = {
 			isa = PBXGroup;
 			children = (
-				B57D60B9736905755DECF7CE /* README.md */,
 				E73DD12F24636FEF00D77039 /* SceneDepthPointCloud */,
 				E73DD12E24636FEF00D77039 /* Products */,
 				A6415A999BE1C768F18B2649 /* Configuration */,
@@ -94,6 +94,7 @@
 				E73DD13424636FEF00D77039 /* ShaderTypes.h */,
 				E7B7223A24807ACA002E43E8 /* MetalBuffer.swift */,
 				E73DD13524636FEF00D77039 /* Renderer.swift */,
+				CFC37FDE24CA155A00A28310 /* ARFrameEncoder.swift */,
 				CF5D9F7F24C0D9870041F290 /* ImageExt.swift */,
 				E7B7223C24809D1E002E43E8 /* Helpers.swift */,
 				E73DD13924636FEF00D77039 /* Main.storyboard */,
@@ -181,6 +182,7 @@
 				E7B7223D24809D1E002E43E8 /* Helpers.swift in Sources */,
 				E7B7223B24807ACA002E43E8 /* MetalBuffer.swift in Sources */,
 				E73DD13624636FEF00D77039 /* Renderer.swift in Sources */,
+				CFC37FDF24CA155A00A28310 /* ARFrameEncoder.swift in Sources */,
 				E73DD13824636FEF00D77039 /* ViewController.swift in Sources */,
 				E73DD13124636FEF00D77039 /* AppDelegate.swift in Sources */,
 			);
