@@ -31,7 +31,7 @@ extension ARFrame: Encodable {
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        //try container.encode(rawFeaturePoints!.points, forKey: .pointCloud)
+
         if let rawFeaturePoints = rawFeaturePoints {
             try container.encode(rawFeaturePoints.points, forKey: .pointCloud)
         } else {
