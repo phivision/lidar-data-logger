@@ -6,7 +6,7 @@
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
- * the property of Adobe Systems Incorporated and its suppliers,
+ * the property of Phi Vision, Inc. and its suppliers,
  * if any.  The intellectual and technical concepts contained
  * herein are proprietary to Adobe Systems Incorporated
  * and its suppliers and may be covered by U.S. and Foreign Patents,
@@ -26,16 +26,16 @@ import ARKit
 extension ARFrame: Encodable {
     
     enum CodingKeys: CodingKey {
-        case pointCloud, depthMapData, confidenceMapData, capturedImageData
+        case featurePoints, depthMapData, confidenceMapData, capturedImageData
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-
+        //try container.encode(rawFeaturePoints!.points, forKey: .featurePoints)
         if let rawFeaturePoints = rawFeaturePoints {
-            try container.encode(rawFeaturePoints.points, forKey: .pointCloud)
+            try container.encode(rawFeaturePoints.points, forKey: .featurePoints)
         } else {
-            try container.encode([vector_float3](), forKey: .pointCloud)
+            try container.encode([vector_float3](), forKey: .featurePoints)
         }
         
         let depthMapCIImage = CIImage(cvPixelBuffer: sceneDepth!.depthMap)
