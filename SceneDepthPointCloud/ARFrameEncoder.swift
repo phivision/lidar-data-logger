@@ -38,15 +38,18 @@ extension ARFrame: Encodable {
             try container.encode([vector_float3](), forKey: .featurePoints)
         }
         
-        let depthMapCIImage = CIImage(cvPixelBuffer: sceneDepth!.depthMap)
-        let depthMapUIImage = UIImage(ciImage: depthMapCIImage)
-        let depthMapData = depthMapUIImage.pngData()!
-        try container.encode(depthMapData, forKey: .depthMapData)
-        
-        let confidenceMapCIImage = CIImage(cvImageBuffer: sceneDepth!.confidenceMap!)
-        let confidenceMapUIImage = UIImage(ciImage: confidenceMapCIImage)
-        let confidenceMapData = confidenceMapUIImage.pngData()!
-        try container.encode(confidenceMapData, forKey: .confidenceMapData)
+        if sceneDepth != nil {
+            sceneDepth?.depthMap.normalize()
+            let depthMapCIImage = CIImage(cvPixelBuffer: sceneDepth!.depthMap)
+            let depthMapUIImage = UIImage(ciImage: depthMapCIImage)
+            let depthMapData = depthMapUIImage.pngData()!
+            try container.encode(depthMapData, forKey: .depthMapData)
+            
+            let confidenceMapCIImage = CIImage(cvImageBuffer: sceneDepth!.confidenceMap!)
+            let confidenceMapUIImage = UIImage(ciImage: confidenceMapCIImage)
+            let confidenceMapData = confidenceMapUIImage.pngData()!
+            try container.encode(confidenceMapData, forKey: .confidenceMapData)
+        }
         
         let capturedImageCIImage = CIImage(cvImageBuffer: capturedImage)
         let capturedImageUIImage = UIImage(ciImage: capturedImageCIImage)

@@ -196,6 +196,37 @@ final class Renderer {
         pointCloudUniforms.localToWorld = viewMatrixInversed * rotateToARCamera
         pointCloudUniforms.cameraIntrinsicsInversed = cameraIntrinsicsInversed
     }
+
+    func bufferSize(pixelBuffer: CVPixelBuffer) {
+        //CVPixelBufferLockBaseAddress(pixelBuffer, )
+            /*
+        let cols = CVPixelBufferGetWidth(pixelBuffer)
+        let rows = CVPixelBufferGetHeight(pixelBuffer)
+        let bytesPerRow = CVPixelBufferGetBytesPerRow( pixelBuffer )
+        let baseAddress = CVPixelBufferGetBaseAddress( pixelBuffer )
+        //let byteBuffer = UnsafeMutablePointer<UInt8>(baseAddress)
+
+            // This next step is not necessary, but I include it here for illustration,
+            // you can get the type of pixel format, and it is associated with a kCVPixelFormatType
+            // this can tell you what type of data it is e.g. in this case Float32
+
+           //OSType type = CVPixelBufferGetPixelFormatType( pixelBuffer);
+            
+            //if (type != kCVPixelFormatType_DepthFloat32) {
+            //    NSLog(@"Wrong type");
+            //}
+            
+            // Arbitrary values of x and y to sample
+            let x = 20 // must be lower that cols
+            let y = 30 // must be lower than rows
+            
+            // Get the pixel.  You could iterate here of course to get multiple pixels!
+        let baseAddressIndex = y  * bytesPerRow + x  * MemoryLayout<Float>.size;
+            let pixel = (Float32)(&baseAddress[baseAddressIndex]);
+
+            print( )*/
+            //CVPixelBufferUnlockBaseAddress( pixelBuffer, 0 );
+    }
     
     func draw() {
         guard let currentFrame = session.currentFrame,
