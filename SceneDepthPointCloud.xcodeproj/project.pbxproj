@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CFA3868024D4A109008191E7 /* Normalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA3867F24D4A109008191E7 /* Normalizer.swift */; };
 		CFC37FDF24CA155A00A28310 /* ARFrameEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC37FDE24CA155A00A28310 /* ARFrameEncoder.swift */; };
 		E73DD13124636FEF00D77039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73DD13024636FEF00D77039 /* AppDelegate.swift */; };
 		E73DD13324636FEF00D77039 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = E73DD13224636FEF00D77039 /* Shaders.metal */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		948146554F46E56B015690CC /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
+		CFA3867F24D4A109008191E7 /* Normalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Normalizer.swift; sourceTree = "<group>"; };
 		CFC37FDE24CA155A00A28310 /* ARFrameEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFrameEncoder.swift; sourceTree = "<group>"; };
 		E73DD12D24636FEF00D77039 /* Point Cloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Point Cloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E73DD13024636FEF00D77039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				E73DD13424636FEF00D77039 /* ShaderTypes.h */,
 				E7B7223A24807ACA002E43E8 /* MetalBuffer.swift */,
 				E73DD13524636FEF00D77039 /* Renderer.swift */,
+				CFA3867F24D4A109008191E7 /* Normalizer.swift */,
 				CFC37FDE24CA155A00A28310 /* ARFrameEncoder.swift */,
 				E7B7223C24809D1E002E43E8 /* Helpers.swift */,
 				E73DD13924636FEF00D77039 /* Main.storyboard */,
@@ -170,6 +173,7 @@
 				E73DD13624636FEF00D77039 /* Renderer.swift in Sources */,
 				CFC37FDF24CA155A00A28310 /* ARFrameEncoder.swift in Sources */,
 				E73DD13824636FEF00D77039 /* ViewController.swift in Sources */,
+				CFA3868024D4A109008191E7 /* Normalizer.swift in Sources */,
 				E73DD13124636FEF00D77039 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
