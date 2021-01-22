@@ -78,6 +78,8 @@ final class Renderer {
                                                             array: makeGridPoints(),
                                                             index: kGridPoints.rawValue, options: [])
     
+    let queue = DispatchQueue(label: "loggerQueue", attributes: .concurrent)
+    
     // RGB buffer
     private lazy var rgbUniforms: RGBUniforms = {
         var uniforms = RGBUniforms()
@@ -228,7 +230,25 @@ final class Renderer {
             //CVPixelBufferUnlockBaseAddress( pixelBuffer, 0 );
     }
     
+    func log() {
+        //THOMAS: encodes the data from ARFrame as a JSON file, and saves locally to iPad.
+        queue.async { [self] in
+            do{
+                let currentFrame = session.currentFrame
+                let encodedData = try JSONEncoder().encode(currentFrame)
+                print(encodedData)
+                let filename = getDocumentsDirectory().appendingPathComponent("data" + String(counter) + ".json")
+                try! encodedData.write(to: filename)
+                counter = counter + 1
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
+    
     func draw() {
+        
         guard let currentFrame = session.currentFrame,
             let renderDescriptor = renderDestination.currentRenderPassDescriptor,
             let commandBuffer = commandQueue.makeCommandBuffer(),
@@ -246,17 +266,9 @@ final class Renderer {
         // update frame data
         update(frame: currentFrame)
         updateCapturedImageTextures(frame: currentFrame)
+
         
-        //THOMAS: encodes the data from ARFrame as a JSON file, and saves locally to iPad. 
-        do {
-            let encodedData = try JSONEncoder().encode(currentFrame)
-            print(encodedData)
-            let filename = getDocumentsDirectory().appendingPathComponent("data" + String(counter) + ".json")
-            try! encodedData.write(to: filename)
-            counter = counter + 1
-        } catch let error {
-          print(error.localizedDescription)
-        }
+        
  
         // handle buffer rotating
         currentBufferIndex = (currentBufferIndex + 1) % maxInFlightBuffers

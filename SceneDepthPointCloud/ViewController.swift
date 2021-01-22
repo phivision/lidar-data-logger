@@ -28,6 +28,7 @@ final class ViewController: UIViewController, ARSessionDelegate {
     private let isUIEnabled = true
     private let confidenceControl = UISegmentedControl(items: ["Low", "Medium", "High"])
     private let rgbRadiusSlider = UISlider()
+    private let shutter = UIButton()
     
     private let session = ARSession()
     private var renderer: Renderer!
@@ -69,7 +70,10 @@ final class ViewController: UIViewController, ARSessionDelegate {
         rgbRadiusSlider.value = renderer.rgbRadius
         rgbRadiusSlider.addTarget(self, action: #selector(viewValueChanged), for: .valueChanged)
         
-        let stackView = UIStackView(arrangedSubviews: [confidenceControl, rgbRadiusSlider])
+        shutter.setTitle("Log", for: .normal)
+        shutter.addTarget(self, action: #selector(shutterClicked), for: .touchDown)
+        
+        let stackView = UIStackView(arrangedSubviews: [confidenceControl, rgbRadiusSlider, shutter])
         stackView.isHidden = !isUIEnabled
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -109,6 +113,11 @@ final class ViewController: UIViewController, ARSessionDelegate {
         default:
             break
         }
+    }
+    
+    @objc
+    private func shutterClicked() {
+        renderer.log()
     }
     
     // Auto-hide the home indicator to maximize immersion in AR experiences.
