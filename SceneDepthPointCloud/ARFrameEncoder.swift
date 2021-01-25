@@ -26,7 +26,7 @@ import ARKit
 extension ARFrame: Encodable {
     
     enum CodingKeys: CodingKey {
-        case featurePoints, depthMapData, confidenceMapData, capturedImageData
+        case featurePoints, depthMapData, confidenceMapData, capturedImageData, maxDepth, minDepth
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -39,7 +39,9 @@ extension ARFrame: Encodable {
         }
         
         if sceneDepth != nil {
-            sceneDepth?.depthMap.normalize()
+            let range = sceneDepth?.depthMap.normalize()
+            try container.encode(range!.max, forKey: .maxDepth)
+            try container.encode(range!.min, forKey: .minDepth)
             let depthMapCIImage = CIImage(cvPixelBuffer: sceneDepth!.depthMap)
             let depthMapUIImage = UIImage(ciImage: depthMapCIImage)
             let depthMapData = depthMapUIImage.pngData()!
